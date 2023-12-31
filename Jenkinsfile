@@ -3,19 +3,7 @@ pipeline {
     tools {
         maven 'maven3'
     }
-    environment {
-        version = ''
-    }
     stages {
-        stage('Read POM') {
-            steps {
-                script {
-                    def pom = readMavenPom file: 'pom.xml'
-                    version = pom.version
-                    echo "Project version is: ${version}"
-                }
-            }
-        }
         stage("Build Artifact") {
             steps {
                 script {
@@ -27,13 +15,6 @@ pipeline {
             steps {
                 script {
                     sh 'mvn test'
-                }
-            }
-        }
-        stage("Upload Artifact s3") {
-            steps {
-                script {
-                    sh "aws s3 cp target/vprofile-${version}.war s3://autonation3/vprofile-artifacts/vprofile-${version}.war"
                 }
             }
         }
