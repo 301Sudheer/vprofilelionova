@@ -33,7 +33,7 @@ pipeline {
         stage("Upload Artifact s3") {
             steps {
                 script {
-                    sh "aws s3 cp target/vprofile-${version}.war s3://automatio999/vprofile-artifacts/vprofile-${version}.war"
+                    sh "aws s3 cp target/vprofile-${version}.war s3://autonation3/vprofile-artifacts/vprofile-${version}.war"
                 }
             }
         }
