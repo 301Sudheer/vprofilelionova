@@ -20,7 +20,7 @@ pipeline {
         }
         stage('Deploy') {
         steps {
-            sshagent(credentials: ['ubuntu']) {
+            sshagent(credentials: ['301sudheer']) {
                 
                 sh "ssh ubuntu@100.25.35.77 'sudo mv ~/vprofile-v1.war /var/lib/tomcat9/webapps/'"
                 sh "ssh ubuntu@100.25.35.77 'sudo systemctl restart tomcat9'"
